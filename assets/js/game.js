@@ -1,37 +1,39 @@
 $( document ).ready(function() {
-    
+    // Create the Heros
     var hero = {
         mario: {
-            name:"mario", 
+            name:"Mario", 
             health: 100, 
             attack: 20,
             sprite: "assets/images/sprite/hero1.gif",
         },
         link: {
-            name:"link", 
+            name:"Link", 
             health: 100, 
             attack: 20,
             sprite: "assets/images/sprite/hero2.gif",
         },
     };
 
-console.log(this);
+    // Creates the Villians
+    var villian = {
+        bowser: {
+            name:"Bowser", 
+            health: 75, 
+            attack: 25,
+            sprite: "assets/images/sprite/villian1.gif",
+        },
+        moblin: {
+            name:"Moblin", 
+            health: 75, 
+            attack: 25,
+            sprite: "assets/images/sprite/villian2.gif",
+        },
+    };
 
-function addHero(player) {
-    $('.hero').html('<img src="'+ player.sprite + '">');
-}
 
 
-// function addVillian(player) {
-//     $('.villian').html('<img src="'+ player.sprite + '">');
-// }
-
-// addVillian(villian);
-
-function disableClick() {
-    $('.hero-picker img').click(false);
-}
-
+// Allow you to select the hero
 function chooseHero() {
     $('.hero1').on('click', function() {
         addHero(hero.mario);
@@ -47,33 +49,45 @@ function chooseHero() {
 }
 chooseHero();
 
-    // random Number Generator
-    function getRandomInteger(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
-    
-    function attack() {
-
-    }
+//  adds hero to the front-end based on click.
+function addHero(playerGood) {
+    $('.hero').html('<img src="'+ playerGood.sprite + '">');
+    $('.hero-name').html(playerGood.name);
+}
 
 
+// disables the hero selection click and hides selection 
+function disableClick() {
+    $('.hero-picker').css('display', 'none');
+    $('.hero-picker img').css('pointer-events', 'none');
+   
+}
 
 
-    // // Make a reset Function
-    // function resetGame() {
-    //     startingNumber = getRandomInteger(18,120);
-    //     firstCrystal = getRandomInteger(1,12);
-    //     secondCrystal = getRandomInteger(1,12);
-    //     thirdCrystal = getRandomInteger(1,12);
-    //     fourthCrystal = getRandomInteger(1,12);
-    //     totalScore = 0;
-        
-    //     totalTimesPlayed = wins + losses;
-        
-    //     $('.score-container').html(totalScore);
-    //     $('.currentNumber').html(startingNumber);
-    //     $('.total-times-played').html(totalTimesPlayed);
-    // }
+
+//  chooses a random Villian
+function randomVillian() {
+    var listKeys = Object.keys(villian);
+    var randomIndex = Math.floor(Math.random() * listKeys.length);
+    var randomObject = villian[listKeys[randomIndex]];
+    return randomObject;
+}
+
+
+randomVillian();
+
+
+console.log(randomVillian());
+
+
+
+
+function chooseVillian(playerBad) {
+    $('.villian').html('<img src="'+ playerBad.sprite + '">');
+    $('.villan-name').html(playerBad.name);
+    console.log(playerBad);
+}
+chooseVillian(randomVillian());
 
 
 });
