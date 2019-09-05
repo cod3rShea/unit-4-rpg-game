@@ -1,0 +1,44 @@
+h1 {
+    border: 6px white dotted;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+ h2 {
+    margin-bottom: 20px;
+ }
+
+html {
+    background-color: #000;
+}
+
+header {
+    margin: 70px;
+}
+
+body {
+   
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    padding: 0 20px;
+
+}
+
+
+
+
+.container {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+
+.hero-picker img {
+    max-width: 75px;
+    height: auto;
+}
+
+.col-1-2 {
+    width: 50%;
+}
