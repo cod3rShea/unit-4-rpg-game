@@ -15,19 +15,19 @@ $( document ).ready(function() {
         },
     };
 
-    // Creates the Villians
-    var villian = {
+    // Creates the Villains
+    var Villain = {
         bowser: {
             name:"Bowser", 
             health: 75, 
             attack: 25,
-            sprite: "assets/images/sprite/villian1.gif",
+            sprite: "assets/images/sprite/villain1.gif",
         },
         moblin: {
             name:"Moblin", 
             health: 75, 
             attack: 25,
-            sprite: "assets/images/sprite/villian2.gif",
+            sprite: "assets/images/sprite/villain2.gif",
         },
     };
 
@@ -51,10 +51,11 @@ chooseHero();
 
 //  adds hero to the front-end based on click.
 function addHero(playerGood) {
-    $('.hero').html('<img src="'+ playerGood.sprite + '">');
+    $('.hero-sprite-container').html('<img src="'+ playerGood.sprite + '">');
     $('.hero-name').html(playerGood.name);
+    $('.hero-health .current-health').html(playerGood.health);
+    chooseVillain(randomVillain());
 }
-
 
 // disables the hero selection click and hides selection 
 function disableClick() {
@@ -65,29 +66,30 @@ function disableClick() {
 
 
 
-//  chooses a random Villian
-function randomVillian() {
-    var listKeys = Object.keys(villian);
+//  chooses a random Villain
+function randomVillain() {
+    var listKeys = Object.keys(Villain);
     var randomIndex = Math.floor(Math.random() * listKeys.length);
-    var randomObject = villian[listKeys[randomIndex]];
+    var randomObject = Villain[listKeys[randomIndex]];
     return randomObject;
 }
 
 
-randomVillian();
+randomVillain();
 
 
-console.log(randomVillian());
+console.log(randomVillain());
 
 
 
 
-function chooseVillian(playerBad) {
-    $('.villian').html('<img src="'+ playerBad.sprite + '">');
-    $('.villan-name').html(playerBad.name);
+function chooseVillain(playerBad) {
+    $('.villain-sprite-container').html('<img src="'+ playerBad.sprite + '">');
+    $('.villain-name').html(playerBad.name);
+    $('.villain-health .current-health').html(playerBad.health);
     console.log(playerBad);
 }
-chooseVillian(randomVillian());
+
 
 
 });
