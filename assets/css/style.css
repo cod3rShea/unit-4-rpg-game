@@ -25,14 +25,10 @@ body {
 
 }
 
-
-
-
 .container {
     display:flex;
     flex-wrap: wrap;
 }
-
 
 .hero-picker img {
     max-width: 75px;
@@ -41,4 +37,8 @@ body {
 
 .col-1-2 {
     width: 50%;
+}
+
+.sprite {
+    height: 120px;
 }
