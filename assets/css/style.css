@@ -42,3 +42,26 @@ body {
 .sprite {
     height: 120px;
 }
+
+
+.health {
+    display: none;
+}
+
+.player-info {
+    margin-top: 100px;
+    display: none;
+}
+
+a.attack-button {
+    background: red;
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+   
+}
+
+.disabled {
+    background-color: #cccccc;
+    color: #666666;
+}

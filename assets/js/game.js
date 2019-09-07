@@ -1,7 +1,7 @@
 $( document ).ready(function() {
    
     // Create the Heros
-    var hero = {
+    var Hero = {
         mario: {
             name:"Mario", 
             health: 100, 
@@ -35,12 +35,12 @@ $( document ).ready(function() {
     // Allow you to select the hero
     function chooseHero() {
         $('.hero1').on('click', function() {
-            addHero(hero.mario);
+            addHero(Hero.mario);
             disableClick();
         });
 
         $('.hero2').on('click', function() {
-            addHero(hero.link);
+            addHero(Hero.link);
             disableClick();
         });
     }
@@ -63,6 +63,9 @@ $( document ).ready(function() {
     function disableClick() {
         $('.hero-picker').css('display', 'none');
         $('.hero-picker img').css('pointer-events', 'none');
+        $('.health').css('display', 'block');
+        $('.player-info').css('display', 'block');
+
     }
 
     //  chooses a random Villain
@@ -81,29 +84,77 @@ $( document ).ready(function() {
     }
 
     function playerAttack() {
-        
-        if ( $('.hero-name').html() == "Mario") {
-            var heroAttack = hero.mario.attack;
-        } else {
-            var heroAttack = hero.link.attack;
+
+        function heroAttack() {
+            if ( $('.hero-name').html() == "Mario") {
+                var heroAttack = Hero.mario.attack;
+            } else {
+                var heroAttack = Hero.link.attack;
+            }
+    
+             heroAttack = Math.floor((Math.random() * heroAttack) + 1);
+
+                       
+            if ( $('.villain-name').html() == "Bowser"  && Villain.bowser.health  > 0) {
+                Villain.bowser.health -= heroAttack;
+                screenContent();
+            } 
+            
+            if ($('.villain-name').html() == "Bowser" && Villain.bowser.health  < 0) {
+                $('.villain-health .attacked-health').html('0');
+            }
+            
+    
+            if ( $('.villain-name').html() == "Moblin"  && Villain.moblin.health  > 0) {
+                Villain.moblin.health -= heroAttack;
+                screenContent();
+            } 
+            
+            if ($('.villain-name').html() == "Moblin" && Villain.moblin.health  < 0) {
+                $('.villain-health .attacked-health').html('0');
+            }
+            
+            $('.attack-button').css('pointer-events', 'none').toggleClass('disabled');
         }
 
-         heroAttack = Math.floor((Math.random() * heroAttack) + 1);
-        
-         if ( $('.villain-name').html() == "Bowser"  && Villain.bowser.health  > 0) {
-            Villain.bowser.health -= heroAttack;
-            screenContent();
-        } 
-        
-        if ($('.villain-name').html() == "Bowser" && Villain.bowser.health  < 0) {
-            $('.villain-health .attacked-health').html('0');
-        }
-        
+        heroAttack();
 
         setTimeout( () => {
-            
- 
-        });
+            function villainAttack(){
+
+                if ( $('.villain-name').html() == "Bowser") {
+                    var villainAttack = Villain.bowser.attack;
+                } else {
+                    var villainAttack = Villain.moblin.attack;
+                }
+        
+                villainAttack = Math.floor((Math.random() * villainAttack) + 1);
+                
+                if ( $('.hero-name').html() == "Link"  && Hero.Link.health > 0) {
+                    Hero.link.health -= villianAttack;
+                    screenContent();
+                } 
+                
+                if ($('.hero-name').html() == "Link" && Hero.link.health < 0) {
+                    $('.hero-health .attacked-health').html('0');
+                }
+                
+        
+                if ( $('.hero-name').html() == "Mario"  && Hero.mario.health > 0) {
+                    Hero.mario.health -= villainAttack;
+                    screenContent();
+                } 
+                
+                if ($('.hero-name').html() == "Mario" && Hero.mario.health < 0) {
+                    $('.hero-health .attacked-health').html('0');
+                }
+            }
+
+            $('.attack-button').css('pointer-events', 'unset').toggleClass('disabled');
+            villainAttack();
+        }, 300);
+
+     
 
     }
   
@@ -111,6 +162,18 @@ $( document ).ready(function() {
 function screenContent() {
     if ( $('.villain-name').html() == "Bowser") {
         $('.villain-health .attacked-health').html(Villain.bowser.health );
+    }
+
+    if ( $('.villain-name').html() == "Moblin") {
+        $('.villain-health .attacked-health').html(Villain.moblin.health );
+    }
+
+    if ( $('.hero-name').html() == "Mario") {
+        $('.hero-health .attacked-health').html(Hero.mario.health);
+    }
+
+    if ( $('.hero-name').html() == "Link") {
+        $('.hero-health .attacked-health').html(Hero.link.health );
     }
 }
 
