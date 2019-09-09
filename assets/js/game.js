@@ -54,6 +54,8 @@ $( document ).ready(function() {
         $('.hero-name').html(playerGood.name);
         // adds heros health
         $('.hero-health .current-health').html(playerGood.health);
+        // adds hero attacked health
+        $('.hero-health .attacked-health').html(playerGood.health);
         
         // adds the randon villain
         chooseVillain(randomVillain());
@@ -113,7 +115,9 @@ $( document ).ready(function() {
             if ($('.villain-name').html() == "Moblin" && Villain.moblin.health  < 0) {
                 $('.villain-health .attacked-health').html('0');
             }
-            
+
+            $('.villain-sprite-container').toggleClass('attack-effect');
+
             $('.attack-button').css('pointer-events', 'none').toggleClass('disabled');
         }
 
@@ -149,10 +153,11 @@ $( document ).ready(function() {
                     $('.hero-health .attacked-health').html('0');
                 }
             }
-
+            $('.villain-sprite-container').toggleClass('attack-effect');
             $('.attack-button').css('pointer-events', 'unset').toggleClass('disabled');
             villainAttack();
-        }, 300);
+            $('.hero-sprite-container').toggleClass('attack-effect');
+        }, 3000);
 
      
 
@@ -161,11 +166,11 @@ $( document ).ready(function() {
 
 function screenContent() {
     if ( $('.villain-name').html() == "Bowser") {
-        $('.villain-health .attacked-health').html(Villain.bowser.health );
+        $('.villain-health .attacked-health').html(Villain.bowser.health);
     }
 
     if ( $('.villain-name').html() == "Moblin") {
-        $('.villain-health .attacked-health').html(Villain.moblin.health );
+        $('.villain-health .attacked-health').html(Villain.moblin.health);
     }
 
     if ( $('.hero-name').html() == "Mario") {
@@ -179,6 +184,7 @@ function screenContent() {
 
     $('.attack-button').on('click', function(){
         playerAttack();
+        $('.hero-sprite-container.attack-effect').removeClass('attack-effect');
     });
 
 });
