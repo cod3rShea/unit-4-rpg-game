@@ -104,6 +104,7 @@ $( document ).ready(function() {
             
             if ($('.villain-name').html() == "Bowser" && Villain.bowser.health  < 0) {
                 $('.villain-health .attacked-health').html('0');
+                $('.villain-sprite-container').css('display', 'none');
             }
             
     
@@ -114,6 +115,7 @@ $( document ).ready(function() {
             
             if ($('.villain-name').html() == "Moblin" && Villain.moblin.health  < 0) {
                 $('.villain-health .attacked-health').html('0');
+                $('.villain-sprite-container').css('display', 'none');
             }
 
             $('.villain-sprite-container').toggleClass('attack-effect');
@@ -141,6 +143,7 @@ $( document ).ready(function() {
                 
                 if ($('.hero-name').html() == "Link" && Hero.link.health < 0) {
                     $('.hero-health .attacked-health').html('0');
+                    $('.hero-sprite-container').css('display', 'none');
                 }
                 
         
@@ -151,6 +154,7 @@ $( document ).ready(function() {
                 
                 if ($('.hero-name').html() == "Mario" && Hero.mario.health < 0) {
                     $('.hero-health .attacked-health').html('0');
+                    $('.hero-sprite-container').css('display', 'none');
                 }
             }
             $('.villain-sprite-container').toggleClass('attack-effect');
