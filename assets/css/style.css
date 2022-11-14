@@ -38,9 +38,67 @@ body {
 }
 
 .sprite {
-    height: 120px;
+    max-height: 120px;
 }
 
+.villain-sprite-container.Moblin {
+  -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.hero-sprite-container,
+.villain-sprite-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.good-attack {
+  transition: 0.5s;
+  animation: attack 4s 1;
+}
+
+@keyframes attack {
+  0% {
+    transform: translateX(100px) rotateY(0deg);
+  }
+
+  49% {
+    transform: translateX(500px) rotateY(0deg);
+  }
+
+  50% {
+    transform: translateX(500px) rotateY(360deg);
+  }
+
+  100% {
+    transform: translateX(100px) rotateY(360deg);
+  }
+}
+
+.bad-attack {
+  transition: 0.5s;
+  animation-delay: 8s;
+  animation: deff 4s 1;
+}
+
+@keyframes deff {
+  0% {
+    transform: translateX(100px) rotateY(0deg);
+  }
+
+  49% {
+    transform: translateX(-500px) rotateY(0deg);
+  }
+
+  50% {
+    transform: translateX(-500px) rotateY(360deg);
+  }
+
+  100% {
+    transform: translateX(100px) rotateY(360deg);
+  }
+}
 
 .health {
     display: none;
